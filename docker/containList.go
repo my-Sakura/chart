@@ -2,24 +2,23 @@ package docker
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/client"
 )
 
 var (
-	Images     = make(map[string]int)
-	ImageSlice = make([]string, 0)
+	Images = make(map[string]int)
 )
 
-func TransferListContainer() {
+func ListContainer() {
 	if len(Images) != 0 {
 		for k, _ := range Images {
 			delete(Images, k)
 		}
 	}
 
-	ImageSlice = ImageSlice[:0]
 	cli, err := client.NewEnvClient()
 	if err != nil {
 		panic(err)
@@ -36,10 +35,6 @@ func TransferListContainer() {
 		} else {
 			Images[container.Image] = 1
 		}
-	}
-
-	for image, _ := range Images {
-		ImageSlice = append(ImageSlice, image)
+		fmt.Println(container.ID[:5])
 	}
 }
-

@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Awesome go-echarts</title>
+    <script src="https://go-echarts.github.io/go-echarts-assets/assets/echarts.min.js"></script>
+    <script src="https://go-echarts.github.io/go-echarts-assets/assets/echarts-wordcloud.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="item" id="zdYyYbXomYXD" style="width:900px;height:500px;"></div>
+</div>
+
+<script type="text/javascript">
+    "use strict";
+    let goecharts_zdYyYbXomYXD = echarts.init(document.getElementById('zdYyYbXomYXD'), "white");
+    let option_zdYyYbXomYXD = {"color":["#c23531","#2f4554","#61a0a8","#d48265","#91c7ae","#749f83","#ca8622","#bda29a","#6e7074","#546570"],"legend":{"show":false},"series":[{"name":"events","type":"wordCloud","waveAnimation":false,"shape":"diamond","data":[{"name":"a","value":"pull image"}],"textStyle":{"normal":{"color":function () {return 'rgb(' + [Math.round(Math.random() * 160),Math.round(Math.random() * 160),Math.round(Math.random() * 160)].join(',') + ')';}}}}],"title":{"text":"docker Events"},"tooltip":{"show":false}};
+    goecharts_zdYyYbXomYXD.setOption(option_zdYyYbXomYXD);
+</script>
+
+<style>
+    .container {margin-top:30px; display: flex;justify-content: center;align-items: center;}
+    .item {margin: auto;}
+</style>
+</body>
+</html>

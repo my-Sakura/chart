@@ -11,23 +11,28 @@ import (
 func MakePieChart() {
 	pie := charts.NewPie()
 
-	pie.SetGlobalOptions(charts.WithTitleOpts(opts.Title{
-		Title:  "运行容器镜像扇形图",	
+	title := opts.Title{
+		Title:  "运行容器镜像扇形图",
 		Bottom: "0",
-		Right: "40%",	
-	}), charts.WithTooltipOpts(opts.Tooltip{
+		Right:  "40%",
+	}
+
+	toolTip := opts.Tooltip{
 		Show:      true,
 		Trigger:   "item",
 		TriggerOn: "mousemove",
 		Formatter: "precent: {d}",
-	}), charts.WithLegendOpts(opts.Legend{
-		Show: true,		
-		Data: docker.ImageSlice,
-	}))
+	}
 
-	pie.AddSeries("a", generatePieItems())
+	legend := opts.Legend{
+		Show: true,
+	}
 
-	f, _ := os.Create("pie.html")
+	pie.SetGlobalOptions(charts.WithTitleOpts(title), charts.WithTooltipOpts(toolTip), charts.WithLegendOpts(legend))
+
+	pie.AddSeries("dockerImage", generatePieItems())
+
+	f, _ := os.Create("example/pie.html")
 	pie.Render(f)
 }
 
